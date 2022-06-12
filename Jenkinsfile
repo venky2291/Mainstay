@@ -29,12 +29,15 @@ node {
 
 	   dockerRegistry = 'https://registry.hub.docker.com'
            dockerCreds = 'docker-venky2291-artifactory'
+
+	   docker.withRegistry(dockerRegistry, dockerCreds) {
  
-           def customImage = docker.build("venky2291/mainstay:latest-${env.BUILD_NUMBER}")
+                  def customImage = docker.build("venky2291/mainstay:latest-${env.BUILD_NUMBER}")
 
-	   echo 'Pushing the Image to Registry'
-
-	   customImage.push()
+	          echo 'Pushing the Image to Registry'
+                  
+	          customImage.push()
+	 }	  
 
     }
 
