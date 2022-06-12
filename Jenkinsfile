@@ -30,7 +30,7 @@ node {
 	   /* This builds the actual image; synonymous to
            * docker build on the command line */
  
-           def customImage= docker.build("venky2291/mainstay")
+           def customImage = docker.build("venky2291/mainstay")
 
     }
 
