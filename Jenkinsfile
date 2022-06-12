@@ -17,9 +17,9 @@ node {
         /*checkout scm*/
         checkout ([
             $class: 'GitSCM',
-            branches: [[name: "${params.Branch}" ]],
+            branches: [[name: '*/master']],
             userRemoteConfigs: [[
-            url: 'https://github.com/venky2291/Mainstay.git']]
+            url: 'https://github.com/venky2291/Mainstay.git'],[credentialsId:'git-cred']
                    ])
     }
 
