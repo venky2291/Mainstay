@@ -43,7 +43,7 @@ node {
 
  
     stage('Create Properties file') {
-        sh "docker inspect --format=\'{{index .RepoDigests 0}}\' registry.hub.docker.com/venky2291/mainstay:${env.BUILD_NUMBER}>image.properties"
+        sh "docker inspect --format=\'{{index .RepoDigests 0}}\'  https://registry.hub.docker.com/venky2291/mainstay:${env.BUILD_NUMBER}>image.properties"
         
         
       
