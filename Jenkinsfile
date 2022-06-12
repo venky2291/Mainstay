@@ -45,7 +45,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         /* If we are pushing to docker hub, use this: */
-           dockerRegistry =  'https://registry.hub.docker.com'
+           dockerRegistry = 'https://registry.hub.docker.com'
            dockerCreds = 'docker-venky2291-artifactory'
         /* If we are pushing to Artifactory, use this: 
         dockerRegistry = 'https://armory-docker-local.jfrog.io'
