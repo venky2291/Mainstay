@@ -7,7 +7,7 @@ node {
     def dockerCreds
     
     parameters {
-        string(name: 'git_commit_hash', defaultValue: 'default', description: 'Git Commit Hash')
+        string(name: 'Branch', defaultValue: 'master', description: 'Git Commit Hash')
     }
 
 
@@ -17,7 +17,7 @@ node {
         /*checkout scm*/
         checkout ([
             $class: 'GitSCM',
-            branches: [[name: "${params.git_commit_hash}" ]],
+            branches: [[name: "${params.Branch}" ]],
             userRemoteConfigs: [[
             url: 'https://github.com/venky2291/Mainstay.git']]
                    ])
