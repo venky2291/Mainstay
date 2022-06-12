@@ -27,7 +27,7 @@ node {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
 
-        app = docker.build("cremerfc/mainstay")
+        app = docker.build("venky2291/mainstay")
     }
 
     stage('Test image') {
@@ -58,7 +58,7 @@ node {
         }
     }
     stage('Create Properties file') {
-        sh "docker inspect --format=\'{{index .RepoDigests 0}}\' registry.hub.docker.com/cremerfc/mainstay:${env.BUILD_NUMBER}>image.properties"
+        sh "docker inspect --format=\'{{index .RepoDigests 0}}\' registry.hub.docker.com/venky2291/mainstay:${env.BUILD_NUMBER}>image.properties"
         
         
       
