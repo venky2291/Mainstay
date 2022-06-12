@@ -19,7 +19,7 @@ node {
             $class: 'GitSCM',
             branches: [[name: "${params.git_commit_hash}" ]],
             userRemoteConfigs: [[
-            url: 'https://github.com/armory/Mainstay.git']]
+            url: 'https://github.com/venky2291/Mainstay.git']]
                    ])
     }
 
@@ -46,7 +46,7 @@ node {
          * Pushing multiple tags is cheap, as all the layers are reused. */
         /* If we are pushing to docker hub, use this: */
            dockerRegistry =  'https://registry.hub.docker.com'
-           dockerCreds = 'fernando-dockerhub'
+           dockerCreds = 'docker-venky2291-artifactory'
         /* If we are pushing to Artifactory, use this: 
         dockerRegistry = 'https://armory-docker-local.jfrog.io'
         dockerCreds = 'fernando-armory-artifactory'*/
