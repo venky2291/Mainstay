@@ -27,40 +27,18 @@ node {
 
            echo 'Starting to build docker image'
 
-	   /* This builds the actual image; synonymous to
-           * docker build on the command line */
- 
-           def customImage = docker.build("venky2291/mainstay")
-
-    }
-
-    stage('Test image') {
-        /* Ideally, we would run a test framework against our image.
-         * For this example, we're using a Volkswagen-type approach ;-) */
-
-        
-            echo "Tests passed, nothing to see here."
-        
-    }
-
-    stage('Push image') {
-        /* Finally, we'll push the image with two tags:
-         * First, the incremental build number from Jenkins
-         * Second, the 'latest' tag.
-         * Pushing multiple tags is cheap, as all the layers are reused. */
-        /* If we are pushing to docker hub, use this: */
-           dockerRegistry = 'https://registry.hub.docker.com'
+	   dockerRegistry = 'https://registry.hub.docker.com'
            dockerCreds = 'docker-venky2291-artifactory'
-        /* If we are pushing to Artifactory, use this: 
-        dockerRegistry = 'https://armory-docker-local.jfrog.io'
-        dockerCreds = 'fernando-armory-artifactory'*/
-        
-        docker.withRegistry(dockerRegistry, dockerCreds ) {
-            customImage.push("${env.BUILD_NUMBER}")
-            customImage.push("latest")
-            
-        }
+ 
+           def customImage = docker.build("venky2291/mainstay:latest-${env.BUILD_NUMBER}")
+
+	   echo 'Pushing the Image to Registry'
+
+	   customImage.push()
+
     }
+
+ 
     stage('Create Properties file') {
         sh "docker inspect --format=\'{{index .RepoDigests 0}}\' registry.hub.docker.com/venky2291/mainstay:${env.BUILD_NUMBER}>image.properties"
         
