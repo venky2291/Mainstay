@@ -54,10 +54,10 @@ node {
         /* If we are pushing to Artifactory, use this: 
         dockerRegistry = 'https://armory-docker-local.jfrog.io'
         dockerCreds = 'fernando-armory-artifactory'*/
-        echo "$env.BUILD_NUMBER"
+        
         docker.withRegistry(dockerRegistry, dockerCreds ) {
-            app.push("${env.BUILD_NUMBER}")
-            app.push("latest")
+            customImage.push("${env.BUILD_NUMBER}")
+            customImage.push("latest")
             
         }
     }
