@@ -24,10 +24,19 @@ node {
     }
 
     stage('Build image') {
-        /* This builds the actual image; synonymous to
-         * docker build on the command line */
+      steps {
 
-        app = docker.build("venky2291/mainstay")
+           echo 'Starting to build docker image'
+
+	    /* This builds the actual image; synonymous to
+            * docker build on the command line */
+
+	   script { 
+ 
+              def customImage= docker.build("venky2291/mainstay")
+
+	      }
+	  }
     }
 
     stage('Test image') {
