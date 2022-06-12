@@ -19,7 +19,7 @@ node {
             $class: 'GitSCM',
             branches: [[name: '*/master']],
             userRemoteConfigs: [[
-            url: 'https://github.com/venky2291/Mainstay.git'],[credentialsId:'git-cred']
+            url: 'https://github.com/venky2291/Mainstay.git'],[credentialsId:'git-cred']]
                    ])
     }
 
