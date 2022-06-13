@@ -43,7 +43,7 @@ node {
 
  
     stage('Create Properties file') {
-        sh "docker inspect  --format='{{index .RepoDigests 0}}'  venky2291/mainstay:${latest-env.BUILD_NUMBER} > image.properties"        
+        sh "docker inspect  --format='{{index .RepoDigests 0}}'  venky2291/mainstay:latest-${env.BUILD_NUMBER} > image.properties"        
       
         archiveArtifacts artifacts: 'image.properties'
     }
